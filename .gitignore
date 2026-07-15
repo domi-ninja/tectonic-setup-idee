@@ -7,7 +7,9 @@ customers/*/src/reports/*.log
 customers/*/src/reports/*.synctex.gz
 customers/*/src/reports/*.aux
 
+# Automatisch waehrend des LaTeX-Laufs aus SVG erzeugte Assets
+customers/*/src/assets/*.generated.pdf
+
 # Editor and OS noise
 .DS_Store
 Thumbs.db
-

@@ -1,0 +1,12 @@
+[doc]
+name = "foo-ag"
+bundle = "https://data1.fullyjustified.net/tlextras-2022.0r0.tar"
+extra_paths = ["../../templates"]
+
+[[output]]
+name = "kundenreport"
+type = "pdf"
+inputs = "reports/kundenreport.tex"
+synctex = true
+shell_escape = true
+shell_escape_cwd = ".."
