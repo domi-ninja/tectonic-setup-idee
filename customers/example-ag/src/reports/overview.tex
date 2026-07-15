@@ -32,6 +32,10 @@ Eigene PNG-, JPEG- oder PDF-Dateien werden einfach unter
 \texttt{src/assets} abgelegt und mit dem Report-Makro referenziert. Breite,
 maximale Höhe und Seitenverhältnis werden zentral vom Template kontrolliert.
 
-\reportfigure{assets/architecture.png}{Vereinfachte Service-Landschaft}
+\begin{figure}[htbp]
+  \centering
+  \reportsvg[width=\linewidth,height=0.68\textheight,keepaspectratio]{assets/architecture.svg}
+  \caption{Vereinfachte Service-Landschaft}
+\end{figure}
 
 \end{document}

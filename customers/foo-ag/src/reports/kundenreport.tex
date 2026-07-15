@@ -1,18 +1,7 @@
 \documentclass{coolreport}
-\usepackage{shellesc}
 \input{customer}
 
 \renewcommand{\reporttitle}{Kundenreport}
-
-% Das SVG wird bei jedem LaTeX-Lauf automatisch in ein PDF konvertiert.
-% Ein alter Konvertierungsstand wird zuerst entfernt, damit Fehler nie durch
-% eine veraltete Datei verdeckt werden.
-\ShellEscape{powershell.exe -NoProfile -Command "Remove-Item -LiteralPath 'assets/pelikan-radfahrer.generated.pdf' -ErrorAction SilentlyContinue; magick -density 144 'assets/pelikan-radfahrer.svg' 'assets/pelikan-radfahrer.generated.pdf'"}
-\IfFileExists{assets/pelikan-radfahrer.generated.pdf}{}{%
-  \PackageError{kundenreport}
-    {SVG-Konvertierung fehlgeschlagen: assets/pelikan-radfahrer.svg}
-    {ImageMagick (magick) muss installiert und im PATH verfuegbar sein.}%
-}
 
 \begin{document}
 \pagestyle{empty}
@@ -20,7 +9,8 @@
 
 \vspace*{\fill}
 \begin{center}
-  \includegraphics[width=0.82\textwidth,height=0.72\textheight,keepaspectratio]{assets/pelikan-radfahrer.generated.pdf}
+  cooler pelikan auf einem velo
+  \reportsvg[width=0.82\textwidth,height=0.72\textheight,keepaspectratio]{assets/pelikan-radfahrer.svg}
 \end{center}
 \vspace*{\fill}
 

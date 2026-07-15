@@ -7,6 +7,15 @@ customers/*/src/reports/*.log
 customers/*/src/reports/*.synctex.gz
 customers/*/src/reports/*.aux
 
+# Tectonic/Shell-Escape kann Zwischenstände auch oberhalb des Report-Ordners
+# ablegen. Diese Dateien sind niemals Quellen.
+customers/**/*.aux
+customers/**/*.log
+customers/**/*.out
+customers/**/*.toc
+customers/**/*.xdv
+customers/**/*.synctex.gz
+
 # Automatisch waehrend des LaTeX-Laufs aus SVG erzeugte Assets
 customers/*/src/assets/*.generated.pdf
 

@@ -8,6 +8,7 @@
 \RequirePackage[a4paper,margin=24mm,headheight=15pt]{geometry}
 \RequirePackage{xcolor}
 \RequirePackage{graphicx}
+\RequirePackage{shellesc}
 \RequirePackage{pdfpages}
 \RequirePackage{booktabs}
 \RequirePackage{tabularx}
@@ -89,6 +90,39 @@
     \caption{#2}
   \end{figure}
 }
+
+% Konvertiert ein SVG automatisch waehrend des LaTeX-Laufs und bindet die
+% erzeugte PDF ein. Der CJS-Konverter prueft Quelle, ImageMagick-Exit-Code und
+% Zieldatei. Tectonic benoetigt dafuer shell_escape und als CWD das Kunden-src.
+\makeatletter
+\newcommand{\reportsvg}[2][]{%
+  \begingroup
+  \ifnum\ShellEscapeStatus=0\relax
+    \PackageError{coolreport}
+      {Automatische SVG-Konvertierung ist deaktiviert}
+      {Setze shell_escape=true und shell_escape_cwd=".." im output-Block der Tectonic.toml.}%
+  \fi
+  \filename@parse{#2}%
+  \edef\reportsvgoutput{\filename@area\filename@base.generated.pdf}%
+  \edef\reportsvgconverter{\@percentchar COOL_DOC_FLOW_ROOT\@percentchar/scripts/convert-svg.cjs}%
+  \edef\reportsvgsource{\@percentchar COOL_DOC_FLOW_SOURCE_ROOT\@percentchar/#2}%
+  \edef\reportsvgtarget{\@percentchar COOL_DOC_FLOW_SOURCE_ROOT\@percentchar/\reportsvgoutput}%
+  \ShellEscape{node \reportsvgconverter\space \reportsvgsource\space \reportsvgtarget}%
+  \IfFileExists{\reportsvgoutput}{%
+    \includegraphics[#1]{\reportsvgoutput}%
+  }{%
+    \@ifundefined{reportsvgconversionattempted}{%
+      % Tectonic stellt neue Shell-Ausgaben teilweise erst im Folgelauf bereit.
+      \immediate\write\@auxout{\string\gdef\string\reportsvgconversionattempted{1}}%
+    }{%
+      \PackageError{coolreport}
+        {SVG-Konvertierung lieferte keine PDF fuer #2}
+        {Pruefe die vorherige Meldung [SVG-FEHLER] und die Konfiguration in Tectonic.toml.}%
+    }%
+  }%
+  \endgroup
+}
+\makeatother
 
 \newcommand{\reportattachment}[1]{%
   \clearpage

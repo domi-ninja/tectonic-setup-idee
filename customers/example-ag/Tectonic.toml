@@ -8,10 +8,13 @@ name = "overview"
 type = "pdf"
 inputs = "reports/overview.tex"
 synctex = true
+shell_escape = true
+shell_escape_cwd = ".."
 
 [[output]]
 name = "audit"
 type = "pdf"
 inputs = "reports/audit.tex"
 synctex = true
-
+shell_escape = true
+shell_escape_cwd = ".."
