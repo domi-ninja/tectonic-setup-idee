@@ -1,0 +1,17 @@
+[doc]
+name = "example-ag"
+bundle = "https://data1.fullyjustified.net/tlextras-2022.0r0.tar"
+extra_paths = ["../../templates"]
+
+[[output]]
+name = "overview"
+type = "pdf"
+inputs = "reports/overview.tex"
+synctex = true
+
+[[output]]
+name = "audit"
+type = "pdf"
+inputs = "reports/audit.tex"
+synctex = true
+

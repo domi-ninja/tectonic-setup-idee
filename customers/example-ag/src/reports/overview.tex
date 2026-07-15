@@ -1,0 +1,37 @@
+\documentclass{coolreport}
+\input{customer}
+
+\renewcommand{\reporttitle}{Service Overview}
+\renewcommand{\reportsubtitle}{Halbjährlicher Überblick über Betrieb und Risiken}
+\renewcommand{\reportdate}{15. Juli 2026}
+
+\begin{document}
+\reporttitlepage
+
+\begin{reportsummary}
+Die Plattform war im Berichtszeitraum stabil. Zwei mittlere Risiken werden im
+nächsten Quartal adressiert; es bestehen keine unmittelbar kritischen Befunde.
+\end{reportsummary}
+
+\tableofcontents
+\clearpage
+
+\input{sections/environment}
+
+\section{Kennzahlen}
+
+\begin{itemize}
+  \item Verfügbarkeit: 99,95\,\%
+  \item Erfolgreiche Deployments: 42
+  \item Offene kritische Findings: 0
+\end{itemize}
+
+\section{Bilder und Diagramme}
+
+Eigene PNG-, JPEG- oder PDF-Dateien werden einfach unter
+\texttt{src/assets} abgelegt und mit dem Report-Makro referenziert. Breite,
+maximale Höhe und Seitenverhältnis werden zentral vom Template kontrolliert.
+
+\reportfigure{assets/architecture.png}{Vereinfachte Service-Landschaft}
+
+\end{document}

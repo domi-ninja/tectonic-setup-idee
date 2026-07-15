@@ -1,0 +1,39 @@
+\documentclass{coolreport}
+\input{customer}
+
+\renewcommand{\reporttitle}{Technical Audit}
+\renewcommand{\reportsubtitle}{Kontrollen und Massnahmen für \assessmentperiod}
+\renewcommand{\reportdate}{15. Juli 2026}
+
+\begin{document}
+\reporttitlepage
+
+\begin{reportsummary}
+Der Audit umfasst Identitätsmanagement, Backup, Monitoring und Patch-Prozesse.
+Von zwölf Kontrollen sind zehn erfüllt und zwei teilweise erfüllt.
+\end{reportsummary}
+
+\input{sections/environment}
+
+\section{Feststellungen}
+
+\begin{tabularx}{\textwidth}{@{}l X l@{}}
+  \toprule
+  ID & Feststellung & Priorität \\
+  \midrule
+  A-01 & Servicekonten werden nicht überall automatisch rotiert. & Mittel \\
+  A-02 & Wiederherstellungstests sind noch nicht vollständig dokumentiert. & Mittel \\
+  \bottomrule
+\end{tabularx}
+
+\section{Empfehlung}
+
+Die beiden Massnahmen sollen bis Ende September abgeschlossen und über einen
+erneuten Kontrolllauf verifiziert werden. Verantwortliche Kontaktperson ist
+\customercontact{} am Standort \customerlocation.
+
+% Mehrseitige externe PDFs lassen sich bei Bedarf so anhängen:
+% \reportattachment{assets/evidence.pdf}
+
+\end{document}
+

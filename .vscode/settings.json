@@ -1,0 +1,40 @@
+{
+  "latex-workshop.latex.autoBuild.run": "onSave",
+  "latex-workshop.latex.recipe.default": "first",
+  "latex-workshop.latex.recipes": [
+    {
+      "name": "Tectonic: aktiven Report als Vorschau bauen",
+      "tools": [
+        "tectonic-preview"
+      ]
+    }
+  ],
+  "latex-workshop.latex.tools": [
+    {
+      "name": "tectonic-preview",
+      "command": "powershell.exe",
+      "args": [
+        "-NoProfile",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        "%WORKSPACE_FOLDER%/scripts/preview.ps1",
+        "-Source",
+        "%DOC_EXT_W32%"
+      ],
+      "env": {}
+    }
+  ],
+  "latex-workshop.latex.outDir": "%DIR%",
+  "latex-workshop.view.pdf.viewer": "tab",
+  "latex-workshop.view.pdf.tab.editorGroup": "right",
+  "latex-workshop.synctex.afterBuild.enabled": true,
+  "latex-workshop.message.error.show": true,
+  "latex-workshop.message.warning.show": false,
+  "files.exclude": {
+    "**/*.aux": true,
+    "**/*.log": true,
+    "**/*.synctex.gz": true
+  }
+}
+

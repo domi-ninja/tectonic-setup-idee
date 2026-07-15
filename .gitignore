@@ -1,0 +1,13 @@
+# Tectonic production output
+customers/*/build/
+
+# LaTeX Workshop preview output next to report sources
+customers/*/src/reports/*.pdf
+customers/*/src/reports/*.log
+customers/*/src/reports/*.synctex.gz
+customers/*/src/reports/*.aux
+
+# Editor and OS noise
+.DS_Store
+Thumbs.db
+
